@@ -568,4 +568,35 @@ public interface CheeseMapper {
 
 }
 ```
-   
+
+## InheritInverseConfiguration
+
+Advises the code generator to apply all the Mappings from an inverse mapping method to the annotated method as well. 
+
+```java
+public class Customer {
+
+    private Long id;
+    private String name;
+
+    //getters and setter omitted for brevity
+}
+
+public class CustomerDto {
+
+    public Long id;
+    public String customerName;
+}
+
+@Mapper
+public interface CustomerMapper {
+
+    CustomerMapper INSTANCE = Mappers.getMapper( CustomerMapper.class );
+
+    @Mapping(source = "customerName", target = "name")
+    Customer toCustomer(CustomerDto customerDto);
+
+    @InheritInverseConfiguration
+    CustomerDto fromCustomer(Customer customer);
+}
+```
