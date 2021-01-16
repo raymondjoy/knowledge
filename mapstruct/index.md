@@ -19,14 +19,14 @@ MapStruct is a Java annotation processor for the generation of type-safe bean ma
 ## Configuration options for set up
 
 1. mapstruct.defaultComponentModel: 
-   * default: Mapper#getMapper(Class)
+   * <u>default</u>: Mapper#getMapper(Class)
    * cdi: @Inject
    * spring: @Autowired
    * jsr330: @Inject
 * If a component model is given for a specific mapper via @Mapper#componentModel(), the value from the annotation takes precedence.
 2. mapstruct.unmappedTargetPolicy:
    * ERROR
-   * WARN
+   * <u>WARN</u>
    * IGNORE
 
 ## Using MapStruct
