@@ -66,7 +66,7 @@ Strategy for dealing with null source values.
 
 Strategy for dealing with null values passed to mapping methods.
 
-* __RETURN_NULL__
+* <u>__RETURN_NULL__</u>
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
 public interface DepartmentMapper {
@@ -130,7 +130,7 @@ public class DepartmentMapperImpl implements DepartmentMapper {
 
 Strategy for dealing with null or not present properties in the source bean.
 
-* __SET_TO_NULL__
+* <u>__SET_TO_NULL__</u>
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValuePropertyMappingStrategy =  NullValuePropertyMappingStrategy.SET_TO_NULL)
 public interface CompanyMapper {
