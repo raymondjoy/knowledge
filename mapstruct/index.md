@@ -7,7 +7,7 @@
 
 * [Performance of Java Mapping](https://www.baeldung.com/java-performance-mapping-frameworks)
 
-## 什么是Mapstruct
+## Introduction
 
 MapStruct is a Java annotation processor for the generation of type-safe bean mapping classes
 
@@ -16,6 +16,17 @@ MapStruct is a Java annotation processor for the generation of type-safe bean ma
 * Compile-time type safety
 * Clear error-reports at build time
 
-## Mapstruct的应用
+## Configuration options for set up
 
-1. 
+1. mapstruct.defaultComponentModel: 
+   * default: Mapper#getMapper(Class)
+   * cdi: @Inject
+   * spring: @Autowired
+   * jsr330: @Inject
+* If a component model is given for a specific mapper via @Mapper#componentModel(), the value from the annotation takes precedence.
+2. mapstruct.unmappedTargetPolicy:
+   * ERROR
+   * WARN
+   * IGNORE
+
+## Using MapStruct
