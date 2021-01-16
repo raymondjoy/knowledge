@@ -6,3 +6,16 @@
 2. 编译期:MapStruct,[JMapper](http://jmapper.sourceforge.net/)
 
 * [Performance of Java Mapping](https://www.baeldung.com/java-performance-mapping-frameworks)
+
+## 什么是Mapstruct
+
+MapStruct is a Java annotation processor for the generation of type-safe bean mapping classes
+
+>Advantages
+* Fast execution
+* Compile-time type safety
+* Clear error-reports at build time
+
+## Mapstruct的应用
+
+1. 
