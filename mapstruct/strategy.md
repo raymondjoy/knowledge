@@ -37,4 +37,8 @@ Strategy for dealing with null or not present properties in the source bean.
 
 * SET_TO_NULL
 * SET_TO_DEFAULT
+```mermaind
+graph LR
+ List(List)--> ArrayList(ArrayList)
+```
 * IGNORE
