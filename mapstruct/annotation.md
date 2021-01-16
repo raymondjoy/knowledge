@@ -2,7 +2,7 @@
 
 ## Mapper
 
-Marks an interface or abstract class as a mapper and activates the generation of a implementation of that type via MapStruct.
+Marks an __interface__ or __abstract class__ as a mapper and activates the generation of a implementation of that type via MapStruct.
 
 ```java
 @Mapper
@@ -478,7 +478,7 @@ public class ReferenceMapper {
 }
 ```
 
-## ValueMappings
+## ~~ValueMappings~~
 
 Constructs a set of value (constant) mappings.
 
