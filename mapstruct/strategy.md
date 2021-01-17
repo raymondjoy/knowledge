@@ -50,10 +50,127 @@ Strategy for propagating the value of collection-typed properties from source to
 
 Strategy for inheriting configurations given for methods of prototype mapping methods (declared on mapper config classes) to actual mapping methods declared on mappers referring to such config class via Mapper.config().
 
-* EXPLICIT
+* <u>EXPLICIT</u>
+
+```java
+@MapperConfig
+public interface EmployeeMapperConfig {
+    @Mapping(target = "registrationDate", source = "createTime")
+    Junior toJunior(Employee employee);
+}
+@Mapper(config = EmployeeMapperConfig.class)
+public interface EmployeeMapper {
+    @InheritConfiguration
+    Junior toJunior(Employee employee);
+}
+
+//generated
+public class EmployeeMapperImpl implements EmployeeMapper {
+
+    @Override
+    public Junior toJunior(Employee employee) {
+        if ( employee == null ) {
+            return null;
+        }
+
+        Junior junior = new Junior();
+
+        junior.setRegistrationDate( employee.getCreateTime() );
+        // some mapping logic
+
+        return junior;
+    }
+}
+```
 * AUTO_INHERIT_FROM_CONFIG
+
+```java
+@Mapper(config = EmployeeMapperConfig.class, mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_ALL_FROM_CONFIG)
+public interface EmployeeMapper {
+    Junior toJunior(Employee employee);
+}
+
+//generated
+public class EmployeeMapperImpl implements EmployeeMapper {
+
+    @Override
+    public Junior toJunior(Employee employee) {
+        if ( employee == null ) {
+            return null;
+        }
+
+        Junior junior = new Junior();
+
+        junior.setRegistrationDate( employee.getCreateTime() );
+        // some mapping logic
+
+        return junior;
+    }
+}
+```
 * AUTO_INHERIT_REVERSE_FROM_CONFIG
+
+```java
+@Mapper(config = EmployeeMapperConfig.class, mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_REVERSE_FROM_CONFIG)
+public interface EmployeeMapper {
+    Employee toEmployee(Junior junior);
+}
+
+//generated
+public class EmployeeMapperImpl implements EmployeeMapper {
+
+    @Override
+    public Employee toEmployee(Junior junior) {
+        if ( junior == null ) {
+            return null;
+        }
+
+        Employee employee = new Employee();
+
+        employee.setCreateTime( junior.getRegistrationDate() );
+        // some mapping logic
+        
+        return employee;
+    }
+}
+```
 * AUTO_INHERIT_ALL_FROM_CONFIG
+
+```java
+@Mapper(config = EmployeeMapperConfig.class, mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_ALL_FROM_CONFIG)
+public interface EmployeeMapper {
+    Junior toJunior(Employee employee);
+    Employee toEmployee(Junior junior);
+}
+public class EmployeeMapperImpl implements EmployeeMapper {
+
+    @Override
+    public Junior toJunior(Employee employee) {
+        if ( employee == null ) {
+            return null;
+        }
+
+        Junior junior = new Junior();
+
+        junior.setRegistrationDate( employee.getCreateTime() );
+        //some mapping logic
+        return junior;
+    }
+
+    @Override
+    public Employee toEmployee(Junior junior) {
+        if ( junior == null ) {
+            return null;
+        }
+
+        Employee employee = new Employee();
+
+        employee.setCreateTime( junior.getRegistrationDate() );
+        //some mapping logic
+        return employee;
+    }
+}
+```
 
 ## NullValueCheckStrategy
 
