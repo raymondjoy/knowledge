@@ -59,7 +59,7 @@ Strategy for inheriting configurations given for methods of prototype mapping me
 
 Strategy for dealing with null source values.
 
-* ON_IMPLICIT_CONVERSION
+* <u>ON_IMPLICIT_CONVERSION</u>
 * ALWAYS
 
 ## NullValueMappingStrategy
@@ -67,6 +67,7 @@ Strategy for dealing with null source values.
 Strategy for dealing with null values passed to mapping methods.
 
 * <u>__RETURN_NULL__</u>
+
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
 public interface DepartmentMapper {
@@ -97,6 +98,7 @@ public class DepartmentMapperImpl implements DepartmentMapper {
 }
 ```
 * __RETURN_DEFAULT__
+
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface DepartmentMapper {
@@ -131,6 +133,7 @@ public class DepartmentMapperImpl implements DepartmentMapper {
 Strategy for dealing with null or not present properties in the source bean.
 
 * <u>__SET_TO_NULL__</u>
+
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValuePropertyMappingStrategy =  NullValuePropertyMappingStrategy.SET_TO_NULL)
 public interface CompanyMapper {
@@ -194,6 +197,7 @@ public class CompanyMapperImpl implements CompanyMapper {
 }
 ```
 * __SET_TO_DEFAULT__
+
 ```java
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS, nullValuePropertyMappingStrategy =  NullValuePropertyMappingStrategy.SET_TO_DEFAULT)
 public interface CompanyMapper {
@@ -295,6 +299,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
             departmentToTechDepartment( employee.getDepartment(), junior.getDepartment() );
         }
         else {
+            //For all other objects an new instance is created, requiring an empty constructor.
             junior.setDepartment( new TechDepartment() );
         }
     }
